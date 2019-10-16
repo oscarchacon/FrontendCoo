@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+          <h1>
+            Lista de Tareas
+          </h1>
+        </div>
+        <div class="col-md-4 text-right">
+          <button class="btn btn-outline-primary" (click)="addNewTask()"><i class="fas fa-plus-circle"></i> Agregar Tarea</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ng-container *ngIf="loadingEvents; else ENDLOADING">
+
+          </ng-container>
+          <ng-template #ENDLOADING>
+            <table class="table table-striped table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Descripción</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="taskWorks?.length < 1; else DATASHOW">
+                  <tr>
+                    <td colspan="10" class="text-center">
+                      Sin Datos
+                    </td>
+                  </tr>
+                </ng-container>
+                <ng-template #DATASHOW>
+                  <tr *ngFor="let task of taskWorks">
+                    <td>{{task.title}}</td>
+                    <td>{{task.description}}</td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <button class="btn btn-info" (click)="editTask(task)"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn btn-danger" (click)="removeTask(task)"><i class="fas fa-trash"></i> Remover</button>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
