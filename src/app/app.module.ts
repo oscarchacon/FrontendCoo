@@ -10,6 +10,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UtilsModule } from './utils/utils.module';
 import { CoreModule } from './core/core.module';
+import { LoadingModule } from './shared/components/loading';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuestionModule } from './shared/components/question/question.module';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,14 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
     UtilsModule,
-    CoreModule
+    CoreModule,
+    LoadingModule,
+    QuestionModule
   ],
   entryComponents: [
     ModalSaveTaskComponent

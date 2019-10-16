@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12">
           <ng-container *ngIf="loadingEvents; else ENDLOADING">
-
+            <loading-table></loading-table>
           </ng-container>
           <ng-template #ENDLOADING>
             <table class="table table-striped table-hover">

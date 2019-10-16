@@ -1,1 +1,35 @@
-<p>modal-save-task works!</p>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+    {{editTask ? 'Editar Tarea' : 'Nueva Tarea'}}
+  </h4>
+  <button type="button" class="close pull-right" aria-label="Cerrar" (click)="editTask ? checkEditWhenClose() : checkNewWhenClose()" [disabled]="requestLoading">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-4" *ngIf="editTask">
+      <div class="form-group">
+        <label>Id</label>
+        <input type="text" class="form-control" value="{{taskWork.id}}" readonly>
+      </div>
+    </div>
+    <div [class]="editTask ? 'col-md-4' : 'col-md-6'">
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" class="form-control" [(ngModel)]="taskWork.title" [disabled]="requestLoading">
+      </div>
+    </div>
+    <div [class]="editTask ? 'col-md-4' : 'col-md-6'">
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea class="form-control" [(ngModel)]="taskWork.description" [disabled]="requestLoading"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button [disabled]="requestLoading" class="btn btn-success" *ngIf="!editTask" (click)="saveNewTask(taskWork)"><i class="fas fa-save"></i> Ingresar</button>
+  <button [disabled]="requestLoading" class="btn btn-warning" *ngIf="editTask" (click)="saveEditTask(taskWork)"><i class="fas fa-edit"></i> Guardar Cambios</button>
+  <button [disabled]="requestLoading" type="button" class="btn btn-light" (click)="!editTask ? checkNewWhenClose() : checkEditWhenClose()"><i class="fas fa-times"></i> Cerrar</button>
+</div>

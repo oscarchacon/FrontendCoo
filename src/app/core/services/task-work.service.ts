@@ -27,7 +27,7 @@ export class TaskWorkService {
     return this.base.put(`${this.endPoint}/${taskWork.id}`, taskWork);
   }
 
-  deleteDate(taskWork: TaskWork | string): Observable<any> {
+  deleteTask(taskWork: TaskWork | string): Observable<any> {
     if (typeof taskWork === 'string') {
       return this.base.delete(`${this.endPoint}/${taskWork}`);
     }
